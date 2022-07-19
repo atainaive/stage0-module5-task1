@@ -65,11 +65,14 @@ public class ArrayTasks {
      */
     public int findIndexOfNumber(int[] arr, int number) {
         int result = -1;
+
         for (int i = 0; i < arr.length; i++) {
-            if (arr[i] == number) {
+            if (number == arr[i]) {
                 result = i;
+                break;
             }
         }
+
         return result;
     }
 
@@ -104,15 +107,27 @@ public class ArrayTasks {
      * arr = [1, 2]         -> [1, 2]
      */
     public int[] getOnlyPositiveNumbers(int[] arr) {
-        int[] newArr = new int[arr.length];
+        int length = arr.length;
+        int[] positiveArr;
+        int count = 0;
+        int j = 0;
 
-        for (int i = 0; i < arr.length; i++) {
+        for (int i = 0; i < length; i++) {
             if (arr[i] > 0) {
-                newArr[i] = arr[i];
+                count++;
             }
         }
 
-        return newArr;
+        positiveArr = new int[count];
+
+        for (int i = 0; i < length; i++) {
+            if (arr[i] > 0) {
+                positiveArr[j] = arr[i];
+                ++j;
+            }
+        }
+
+        return positiveArr;
     }
 
     /**
@@ -126,19 +141,20 @@ public class ArrayTasks {
      * arr = [[5, 4], [7]]       -> [[7], [4, 5]]
      */
     public int[][] sortRaggedArray(int[][] arr) {
-        int firstArrLength = arr[0].length;
-        int secondArrLength = arr[1].length;
-
-        if (firstArrLength > secondArrLength) {
-            int temp = 0;
-            for (int i = 0; i < firstArrLength; i++) {
-                temp = arr[0][i];
-                arr[0][i] = arr[1][i];
-                arr[1][i] = temp;
+        int temp = 0;
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i].length > arr[i + 1].length) {
+                for (int j = 0; j < arr[i].length; j++) {
+                    temp = arr[i][j];
+                    arr[i][j] = arr[i + 1][j];
+                    arr[i + 1][j] = temp;
+                }
             }
         }
-        insertionSort(arr[0]);
-        insertionSort(arr[1]);
+
+        for (int i = 0; i < arr.length; i++) {
+            insertionSort(arr[i]);
+        }
 
         return arr;
     }
@@ -155,5 +171,9 @@ public class ArrayTasks {
 
             arr[j + 1] = temp;
         }
+    }
+
+    public void swapRows(int[][] arr, int rowA, int rowB) {
+
     }
 }
