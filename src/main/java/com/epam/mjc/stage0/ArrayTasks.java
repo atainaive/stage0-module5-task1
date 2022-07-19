@@ -107,22 +107,21 @@ public class ArrayTasks {
      * arr = [1, 2]         -> [1, 2]
      */
     public int[] getOnlyPositiveNumbers(int[] arr) {
-        int length = arr.length;
         int[] positiveArr;
         int count = 0;
         int j = 0;
 
-        for (int i = 0; i < length; i++) {
-            if (arr[i] > 0) {
+        for (int k : arr) {
+            if (k > 0) {
                 count++;
             }
         }
 
         positiveArr = new int[count];
 
-        for (int i = 0; i < length; i++) {
-            if (arr[i] > 0) {
-                positiveArr[j] = arr[i];
+        for (int k : arr) {
+            if (k > 0) {
+                positiveArr[j] = k;
                 ++j;
             }
         }
@@ -141,7 +140,7 @@ public class ArrayTasks {
      * arr = [[5, 4], [7]]       -> [[7], [4, 5]]
      */
     public int[][] sortRaggedArray(int[][] arr) {
-        int temp = 0;
+        int temp;
         for (int i = 0; i < arr.length; i++) {
             if (arr[i].length > arr[i + 1].length) {
                 for (int j = 0; j < arr[i].length; j++) {
@@ -152,8 +151,8 @@ public class ArrayTasks {
             }
         }
 
-        for (int i = 0; i < arr.length; i++) {
-            insertionSort(arr[i]);
+        for (int[] ints : arr) {
+            insertionSort(ints);
         }
 
         return arr;
@@ -173,7 +172,4 @@ public class ArrayTasks {
         }
     }
 
-    public void swapRows(int[][] arr, int rowA, int rowB) {
-
-    }
 }
