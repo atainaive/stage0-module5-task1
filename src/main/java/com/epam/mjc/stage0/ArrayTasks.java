@@ -47,8 +47,8 @@ public class ArrayTasks {
     public int totalSum(int[] arr) {
         int sum = 0;
 
-        for (int i = 0; i < arr.length; i++) {
-            sum = sum + arr[i];
+        for (int j : arr) {
+            sum = sum + j;
         }
 
         return sum;
@@ -86,7 +86,7 @@ public class ArrayTasks {
         for (int i = 0; i < arr.length / 2; i++) {
             String temp = arr[i];
             arr[i] = arr[arr.length - i - 1];
-            arr[arr.length - i - 1] = arr[i];
+            arr[arr.length - i - 1] = temp;
         }
 
         return arr;
